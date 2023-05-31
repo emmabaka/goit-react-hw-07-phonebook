@@ -1,14 +1,14 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { deleteContactsThunk, getContactsThunk } from 'redux/contactsThunk';
+import { getContactsSelector, getFilterSelector } from 'redux/selectors';
 import { ThreeDots } from 'react-loader-spinner';
 import css from './ContactList.module.css';
-import { deleteContactsThunk, getContactsThunk } from 'redux/contactsThunk';
-import { useEffect } from 'react';
 
-const selector = state => state.contacts;
 const ContactList = () => {
-  const { data, error, isLoading } = useSelector(selector);
+  const { data, error, isLoading } = useSelector(getContactsSelector);
+  const filterName = useSelector(getFilterSelector);
   const dispatch = useDispatch();
-  const filterName = useSelector(state => state.filter);
 
   useEffect(() => {
     dispatch(getContactsThunk());

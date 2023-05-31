@@ -18,11 +18,9 @@ const handleRejected = (state, { payload }) => {
   state.error = payload;
 };
 const handleFulfilledGet = (state, { payload }) => {
-  console.log(payload);
   state.data = payload;
 };
 const handleFulfilledAdd = (state, { payload }) => {
-  console.log(payload);
   state.data.unshift(payload);
 };
 const handleFulfilledDelete = (state, { payload }) => {
